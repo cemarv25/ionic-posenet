@@ -34,6 +34,7 @@ export class HomePage {
     }
   }
 
+  // tslint:disable-next-line: use-lifecycle-interface
   async ngAfterViewInit() {
     const videoWidth = this.isMobile ? 400 : 640;
     const videoHeight = this.isMobile ? 533 : 480;
