@@ -1,6 +1,6 @@
 {
   "appId": "io.ionic.starter",
-  "appName": "ionic-demo",
+  "appName": "ionic-posenet",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "www",
