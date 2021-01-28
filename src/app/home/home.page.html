@@ -7,15 +7,27 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <video #video [hidden]="!cameraActive" width="100%" autoplay></video>
+  <video id="video-input" #videoInput [hidden]="!cameraActive" [ngClass]="isMobile ? 'video-mobile' : 'video-web'"></video>
+  <canvas id="output" #output [hidden]="!cameraActive" [ngClass]="isMobile ? 'canvas-mobile' : 'canvas-web'"></canvas>
 
   <ion-button *ngIf="!cameraActive" expand="full" (click)="openCamera()">
     <ion-icon slot="start" name="camera"></ion-icon>
     Open Camera
   </ion-button>
 
-  <ion-button *ngIf="cameraActive" expand="full" (click)="closeCamera()">
+  <ion-button *ngIf="cameraActive" expand="full" (click)="closeCamera()" [ngClass]="isMobile ? 'buttons-mobile' : null">
     <ion-icon slot="start" name="camera-reverse"></ion-icon>
     Close Camera
   </ion-button>
+
+  <div id="options" *ngIf="cameraActive" [ngClass]="isMobile ? 'buttons-mobile' : null">
+    <ion-button expand="full" (click)="openPicker()">
+      <ion-icon slot="start" name="settings-outline"></ion-icon>
+      Select Algorithm ({{netOpts.algorithm}})
+    </ion-button>
+    <ion-button expand="full" (click)="startPoseDetection()">
+      <ion-icon slot="start" name="body-outline"></ion-icon>
+      Start Pose Detection
+    </ion-button>
+  </div>
 </ion-content>
